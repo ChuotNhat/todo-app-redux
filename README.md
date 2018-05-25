@@ -1,2 +1,2 @@
-# todo-app-redux
-Create simple todo app with Redux
+Exercise 1
+	- Creat and play with components, props...

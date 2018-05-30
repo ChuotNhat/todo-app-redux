@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { saveTodo } from '../actions'
+import { saveTodo, editDataAPI, URL } from '../actions'
 const Todo = ({ id, onClick, onDelete, completed, text , onEdit, onSave, onCancel, display, dispatch}) => {
   let input
   return (
@@ -9,7 +9,7 @@ const Todo = ({ id, onClick, onDelete, completed, text , onEdit, onSave, onCance
         <input defaultValue={text} ref={node => input = node} />
         <button 
           onClick={() => {
-            dispatch(saveTodo(id, input.value))
+            dispatch(editDataAPI(URL+'/'+id, saveTodo(id, input.value)))
           }}
           className="btn btn--save">
           Save

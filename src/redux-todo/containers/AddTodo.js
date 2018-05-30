@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addTodo } from '../actions'
+import { addTodo, postData, URL } from '../actions'
 
 const AddTodo = ({ dispatch }) => {
   let input
@@ -8,13 +8,10 @@ const AddTodo = ({ dispatch }) => {
   return (
     <div className="Addtodo">
       <form onSubmit={e => {
-        e.preventDefault()
-        if (!input.value.trim()) {
-          return
-        }
-        dispatch(addTodo(input.value))
-        input.value = ''
-      }}>
+          e.preventDefault()
+          dispatch(postData(URL, addTodo(input.value)));
+          input.value = ''
+        }}>
         <input ref={node => input = node} placeholder="Input free text"/>
         <button type="submit" className="btn btn--submit">
           Add Todo
@@ -23,5 +20,4 @@ const AddTodo = ({ dispatch }) => {
     </div>
   )
 }
-
 export default connect()(AddTodo)
